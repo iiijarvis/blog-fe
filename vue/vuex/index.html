@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./src/vue.js"></script>
+  <script src="./src/vuex.js"></script>
+  <title>vuex</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <div>{{$store.state.count}}</div>
+    <button @click="increment">button</button>
+  </div>
+
+  <script>
+    var store = new Vuex.Store({
+      state: {
+        count: 0
+      },
+      modules: {
+        a: {
+          state: { x: 'a' },
+          mutations: {
+            increment(state) {
+              state.count--;
+              console.log(state);
+            }
+          },
+          modules: {
+            c: {
+              state: { x: 'c' }
+            }
+          }
+        },
+        b: {
+          state: { x: 'b' }
+        }
+      },
+      mutations: {
+        increment(state) {
+          state.count++;
+          console.log(state.count);
+        },
+        decrement(state) {
+          state.count--;
+        }
+      }
+    });
+    var app = new Vue({
+      el: '#app',
+      store: store,
+      // template: '<div>{{count}}</div>',
+      data() {
+        return {
+          count: 10,
+          message: 'Hello Vue!'
+        }
+      },
+      mounted() {
+        console.log(this.add);
+      },
+      computed: {
+        ...Vuex.mapState({
+          add: function (state) {
+            return 'add:' + state.count;
+          }
+        })
+      },
+      methods: {
+        increment() {
+          // this.count++;
+          store.commit('increment')
+        },
+        decrement() {
+          store.commit('decrement')
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
