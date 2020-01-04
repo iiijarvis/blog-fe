@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue双向数据绑定</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <input id="txt" />
+    <div>123</div>
+    <!-- <input id="txt2" /> -->
+  </div>
+
+  <script>
+    var app = document.getElementById('app');
+    // var txt2 = document.getElementById('txt2');
+
+    var obj = {};
+    var val;
+    // function defineReactive(obj, key, val) {
+    Object.defineProperty(obj, 'name', {
+      get: function () {
+        return val;
+      },
+      set: function (newVal) {
+        val = newVal;
+        // 数据更新通知到视图
+        // txt.value = newVal;
+      }
+    });
+    // }
+
+    compile(app);
+
+    function compile(el) {
+      // 遍历所有元素
+      if (el.firstChild) {
+        compile(el.firstChild);
+      }
+      for (var i = 0; i < el.childNodes.length; i++) {
+        // 对标签的类型进行判断，由于比较多，这里只对 <div> 、 <input> 两个标签做检测，其他逻辑相同
+        if (el.childNodes[i].tagName && el.childNodes[i].tagName.toLowerCase() === 'input') {
+          el.childNodes[i].addEventListener('input', function (e) {
+            obj.name = e.target.value;
+          });
+        } else if (el.childNodes[i].tagName && el.childNodes[i].tagName.toLowerCase() === 'div') {
+          // <div> 标签视图不会变化，即不会引起数据变化
+        }
+      }
+    }
+
+    // txt.addEventListener('input', function (e) {
+    //   // 视图更新通知到数据
+    //   obj.name = e.target.value;
+    // });
+
+    // console.log(obj.name);
+    // // 修改数据
+    // obj.name = 'zhangsan';
+    // console.log(obj.name);
+  </script>
+</body>
+
+</html>
