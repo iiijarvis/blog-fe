@@ -7,7 +7,7 @@
 
 ## 教程
 
-<details>
+<details open>
   <summary>点击展开</summary>
 
   [阮一峰 JavaScript教程](https://javascript.ruanyifeng.com)
@@ -21,7 +21,7 @@
 
 ## 基础
 
-<details>
+<details open>
   <summary>点击展开</summary>
 
   《JavaScript高级程序设计》（第3版） 第6章 面向对象的程序设计
@@ -46,7 +46,7 @@
 
 ## 进阶
 
-<details>
+<details open>
   <summary>点击展开</summary>
 
   [高性能渲染十万条数据(虚拟列表)](https://juejin.im/post/5db684ddf265da4d495c40e5) （关键字：高性能渲染十万条数据 虚拟列表）
@@ -105,5 +105,14 @@
   <summary>点击展开</summary>
 
   [https://github.com/Advanced-Frontend/Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question)
+
+</details>
+
+## 历史
+
+<details>
+  <summary>点击展开</summary>
+
+  [彻底搞清楚javascript中的require、import和export](https://www.cnblogs.com/libin-1/p/7127481.html) （关键字：搞清楚 require、import和export）
 
 </details>
